@@ -1,10 +1,21 @@
 # app-pipeline
 
-Una skill de Claude Code que dirige un proyecto de app completo, desde una idea (o una app de referencia) hasta su publicación, en orden fijo y con puntos de control para no gastar una sesión entera sin mirar.
+Dos skills de Claude Code que dirigen un proyecto de app completo, desde una idea (o una app de referencia) hasta su publicación, en orden fijo.
 
-Versión en inglés: [README.md](README.md). La skill está escrita en español.
+| Skill | Estilo |
+|---|---|
+| [`app-pipeline`](skills/app-pipeline) | Con puntos de control: se detiene a preguntar cuando un hallazgo cambia el rumbo y hace pausas entre fases para no gastar una sesión entera sin mirar. |
+| [`app-straight-pipeline`](skills/app-straight-pipeline) | Derecha: no pregunta por el camino, decide con su propio criterio a partir de lo que dijiste o insinuaste ("una copia solo para mí", "que cobre mensualmente"), entrega un producto hecho con un resumen y hace todas sus preguntas al final para corregirlo. |
 
-## Qué hace
+Versión en inglés: [README.md](README.md). Las skills están escritas en español.
+
+## app-straight-pipeline en breve
+
+- **Lee primero tus indicios:** las señales explícitas o implícitas se convierten en decisiones, cada una anotada con su confianza y lo que costaría cambiarla.
+- **No pregunta por el camino**, pero no se salta la seguridad: publicar, desplegar, hacer push, pagos reales, cuentas, credenciales y mensajes en tu nombre quedan preparados y "pendientes de tu OK".
+- **Termina con `RESUMEN-FINAL.md`:** qué se construyó, qué incluye, qué no se pudo hacer y por qué, qué se verificó y qué no, y una ronda de preguntas ordenada por el coste de equivocarse. Tus respuestas deciden qué se corrige y qué fases se rehacen.
+
+## Qué hace app-pipeline
 
 No reemplaza a otras skills: las ejecuta en orden, cargando cada una solo en su fase, y guarda el progreso en un archivo `PIPELINE.md` para que una sesión nueva retome donde se quedó la anterior.
 
@@ -35,7 +46,7 @@ Si falta alguna, la skill lo avisa y hace esa fase a mano.
 
 ## Instalación
 
-Copia `skills/app-pipeline/` en `~/.claude/skills/` (todos los proyectos) o en `.claude/skills/` (un proyecto) y abre una sesión nueva. Empieza con `/app-pipeline`.
+Copia `skills/app-pipeline/` y/o `skills/app-straight-pipeline/` en `~/.claude/skills/` (todos los proyectos) o en `.claude/skills/` (un proyecto) y abre una sesión nueva. Empieza con `/app-pipeline` o `/app-straight-pipeline`.
 
 ## Límites
 
